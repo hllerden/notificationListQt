@@ -1,6 +1,7 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
-
+import Qt5Compat.GraphicalEffects
+import notificationListQt
 SwipeDelegate {
     id: swipeDelegate
     width: parent.width
@@ -8,6 +9,10 @@ SwipeDelegate {
 
 
     text: qsTr("Swipe Delegate")
+    // set text color
+
+
+
     property bool current:ListView.isCurrentItem
 
     onPressed:  {
@@ -20,7 +25,37 @@ SwipeDelegate {
         console.log("current item at indexs: "+index)
     }
 
+   background:
+       Item{
 
+       Rectangle {
+           id:backRect
+            radius: 10
+           width: swipeDelegate.width
+           height: 50
+           color: "black"
+           border.color: "white"
+
+            RadialGradient {
+               anchors.fill: parent
+               source:parent
+
+
+               gradient: Gradient {
+                   GradientStop {
+                       position: 0.5
+                       color: Constants.backgroundColor
+                   }
+
+                   GradientStop {
+                       position: 1
+                       color: Constants.grey
+                   }
+               }
+           }
+
+       }
+   }
 
 
     swipe.right: Label {
@@ -41,6 +76,7 @@ SwipeDelegate {
 
                 background: Rectangle {
                     color: deleteLabel.SwipeDelegate.pressed ? Qt.darker("tomato", 1.3) : "tomato"
+                    radius: 10
                 }
             }
     swipe.transition: Transition {
@@ -48,14 +84,8 @@ SwipeDelegate {
         }
 
 
-    Rectangle{
-        id:background
-        color:"green"
-        anchors.left: parent.left
-        anchors.right: swipe.right.left
 
 
-    }
     ListView.onRemove: SequentialAnimation {
                PropertyAction {
                     target: swipeDelegate

@@ -9,6 +9,7 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 import notificationListQt
+import Qt5Compat.GraphicalEffects
 
 Rectangle {
     id: rectangle
@@ -28,5 +29,31 @@ Rectangle {
         color: "transparent"
         border.color: "green"
         border.width: 1
+    }
+
+    Rectangle {
+        id: rectangle1
+        x: 285
+        y: 335
+        width: 296
+        height: 46
+        color: "#010b19"
+        radius: 5
+        border.color: "#ffffff"
+
+        RadialGradient {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop {
+                    position: 0.5
+                    color: Constants.backgroundColor
+                }
+
+                GradientStop {
+                    position: 1
+                    color: Constants.grey
+                }
+            }
+        }
     }
 }
