@@ -19,10 +19,19 @@ Rectangle {
 
     MyNotificationView {
         id: myNotificationView
-        x: 285
+        x: 100
         y: 147
         Component.onCompleted: {
-            addNotificaiton("hello dear");
+            addNotificaiton("hello dear")
+        }
+    }
+    MyNotificationView {
+        id: myNotificationView1
+        anchors.left: myNotificationView.right
+        anchors.leftMargin: 50
+        y: 147
+        Component.onCompleted: {
+            addNotificaiton("hello dear")
         }
     }
     Rectangle {
@@ -32,5 +41,4 @@ Rectangle {
         border.color: "green"
         border.width: 1
     }
-
 }
