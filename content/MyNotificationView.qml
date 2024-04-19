@@ -8,7 +8,7 @@ ListView {
     width: 325
     height: 159
     spacing:3
-     clip: true
+    clip: true
     flickableDirection: Flickable.VerticalFlick
   //  boundsBehavior: Flickable.StopAtBounds
 
@@ -16,36 +16,33 @@ ListView {
      ListModel {
          id:listModel
          ListElement {
-             name: "kaydır beni"
-             colorCode: "grey"
+             name: "swipe me"
          }
 
          ListElement {
-             name: "benide kaydır"
-             colorCode: "red"
+             name: "swipe me too"
          }
 
          ListElement {
-             name: "en çok ben kayacam"
-             colorCode: "blue"
+             name: "I will swipe the most"
          }
 
          ListElement {
-             name: "Green"
-             colorCode: "green"
+             name: "test"
          }
      }
 
     delegate:MyNotificationSwipe{
         id: itemDelegate
-            text:name
+            nText:name
 
 
             }
 
 
-
-
+    function addNotificaiton(text){
+        listModel.append({name:text})
+    }
         /*
         MyNotificationItemDelegate {
         id: itemDelegate

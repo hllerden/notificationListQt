@@ -1,18 +1,17 @@
 import QtQuick 6.2
 import QtQuick.Controls 6.2
-import Qt5Compat.GraphicalEffects
 import notificationListQt
+import QtQuick.Shapes 1.6
+import Qt5Compat.GraphicalEffects
+
 SwipeDelegate {
     id: swipeDelegate
     width: parent.width
     height: 50
 
-
-    text: qsTr("Swipe Delegate")
+   // text: qsTr("Swipe Delegate")
     // set text color
-
-
-
+    property string nText: text
     property bool current:ListView.isCurrentItem
 
     onPressed:  {
@@ -32,28 +31,24 @@ SwipeDelegate {
            id:backRect
             radius: 10
            width: swipeDelegate.width
-           height: 50
+           height: swipeDelegate.height
            color: "black"
-           border.color: "white"
-
-            RadialGradient {
-               anchors.fill: parent
-               source:parent
+           border.color: "#40ffffff"
 
 
-               gradient: Gradient {
-                   GradientStop {
-                       position: 0.5
-                       color: Constants.backgroundColor
-                   }
 
-                   GradientStop {
-                       position: 1
-                       color: Constants.grey
-                   }
-               }
-           }
-
+       }
+       Text {
+           id: textLabel
+           text: nText
+           color: "white"
+           font.pixelSize: 20
+           verticalAlignment: Label.AlignVCenter
+           padding: 12
+           height: parent.height
+           anchors.left: parent.left
+           anchors.leftMargin: 10
+           anchors.verticalCenter: parent.verticalCenter
        }
    }
 
@@ -76,7 +71,10 @@ SwipeDelegate {
 
                 background: Rectangle {
                     color: deleteLabel.SwipeDelegate.pressed ? Qt.darker("tomato", 1.3) : "tomato"
-                    radius: 10
+                    height: parent.height-2
+                    radius: 12
+                    border.color: "#40ffffff"
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
     swipe.transition: Transition {
@@ -115,6 +113,8 @@ SwipeDelegate {
                     value: false
                 }
     }
+
+
 
 
 

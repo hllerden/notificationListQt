@@ -15,13 +15,15 @@ Rectangle {
     id: rectangle
     width: Constants.width
     height: Constants.height
-
-    color: Constants.backgroundColor
+    color: Constants.blueColor
 
     MyNotificationView {
         id: myNotificationView
         x: 285
         y: 147
+        Component.onCompleted: {
+            addNotificaiton("hello dear");
+        }
     }
     Rectangle {
         id: guideRectangle
@@ -31,29 +33,4 @@ Rectangle {
         border.width: 1
     }
 
-    Rectangle {
-        id: rectangle1
-        x: 285
-        y: 335
-        width: 296
-        height: 46
-        color: "#010b19"
-        radius: 5
-        border.color: "#ffffff"
-
-        RadialGradient {
-            anchors.fill: parent
-            gradient: Gradient {
-                GradientStop {
-                    position: 0.5
-                    color: Constants.backgroundColor
-                }
-
-                GradientStop {
-                    position: 1
-                    color: Constants.grey
-                }
-            }
-        }
-    }
 }
